@@ -2,14 +2,6 @@
 using System.Linq;
 using UnityEngine;
 
-
-/// <summary>
-/// Parallax scrolling script that should be assigned to a layer
-///
-/// This is related to the tutorial http://pixelnest.io/tutorials/2d-game-unity/parallax-scrolling/
-///
-/// See the result: http://pixelnest.io/tutorials/2d-game-unity/parallax-scrolling/-img/multidir_scrolling.gif
-/// </summary>
 public class ScrollingScript : MonoBehaviour
 {
 	/// <summary>

@@ -1,13 +1,10 @@
-﻿
-// SIMPLIFIED VERSION
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 
 public class playerController : MonoBehaviour {
 	[SerializeField]
-	private float speed = 0.01f;
+	private float speed = 0.05f;
 	private Transform _transform;
 	private Vector2 _currentPos;
 	public GameObject playerBullet;
@@ -25,13 +22,13 @@ public class playerController : MonoBehaviour {
 
 
 	[SerializeField]
-	private float leftX;
+	private float leftX = 0;
 	[SerializeField]
-	private float rightX;
+	private float rightX = 0;
 	[SerializeField]
-	private float leftY;
+	private float leftY = 0;
 	[SerializeField]
-	private float rightY;
+	private float rightY = 0;
 
 	void Start(){
 		_transform = gameObject.GetComponent<Transform>();
@@ -39,8 +36,6 @@ public class playerController : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-
-
 
 		if (Input.GetKeyDown("space"))
 		{
@@ -70,14 +65,7 @@ public class playerController : MonoBehaviour {
 	{
 		playerDidCollide ();
 	}
-
-	// Normal Collision (no trigger) is for floor and ceiling, so we have physical constraints
-	void OnCollisionEnter2D(Collision2D thisObject)
-	{
-		playerDidCollide ();
-	}
-
-
+		
 
 	void playerDidCollide () {
 
@@ -86,12 +74,9 @@ public class playerController : MonoBehaviour {
 			//Debug.Log("Collision!"+" "+playerLives+" Lives");
 
 		} else if (playerLives <= 0 && !playerIsImmortal) { // no lives remaining
-
+			
 			gameOver();
-
 		}
-
-
 	}
 
 
@@ -110,7 +95,7 @@ public class playerController : MonoBehaviour {
 		if (isGameOver && Input.GetButtonDown("Fire1") || isGameOver && Input.GetMouseButtonDown(0)) {
 			//Debug.Log("GAME RESTART");
 			Time.timeScale = 1.0F; // Restart the time
-			Application.LoadLevel(Application.loadedLevel); // Reload this level
+			//Application.LoadLevel(Application.loadedLevel); // Reload this level
 		}
 
 		float moveHorizontal = Input.GetAxis("Horizontal");
